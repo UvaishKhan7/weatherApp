@@ -28,11 +28,14 @@ export default function SearchBar() {
         }
     }
 
+    const goToDetails = () => navigation.navigate('Details', {weatherData: weatherData})
+
     return (
         <View style={styles.container}>
             <View style={styles.searchBar}>
                 <TextInput
                     placeholder='Enter City name'
+                    placeholderTextColor= 'black'
                     value={cityName}
                     onChangeText={(text) => setCityName(text)}
                     style={styles.searchText}
@@ -50,7 +53,7 @@ export default function SearchBar() {
                             </View>
                             <Text style={styles.humidity}>Humidity: {weatherData.main.humidity}%</Text>
                         </View>
-                        <TouchableOpacity style={styles.favIcon} onPress={() => navigation.navigate('Details')} >
+                        <TouchableOpacity style={styles.favIcon} onPress={goToDetails} >
                             <EvilIcons name="exclamation" size={40} color="green" />
                             <Text style={styles.fav}>Details</Text>
                         </TouchableOpacity>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         paddingHorizontal: 10,
         backgroundColor: 'rgba(0,0,0,0.3)',
-        borderColor: 'lightgray',
+        borderColor: 'transparent',
     },
     searchText: {
         fontSize: 20,

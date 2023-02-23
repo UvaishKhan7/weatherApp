@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native'
 import SearchBar from './SearchBar';
-import { haze, rainy, snow, sunny } from '../assets/backgroundImages/index';
+import { haze, rainy, snow, sunny, clouds } from '../assets/backgroundImages/index';
 
 export default function Weather({ main, weather, cityName }) {
 
@@ -16,7 +16,8 @@ export default function Weather({ main, weather, cityName }) {
         if(weather && weather === 'Clear') return sunny
         if(weather && weather === 'Rain') return rainy
         if(weather && weather === 'Haze') return haze
-        return haze;   
+        if(weather && weather === 'Clouds') return clouds
+        return sunny;   
     }
 
     return (
