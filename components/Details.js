@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {
   haze,
+  mist,
   rainy,
   snow,
   sunny,
@@ -29,8 +30,8 @@ export default function Details({ route }) {
     if (sky && sky === 'Rain') return rainy;
     if (sky && sky === 'Haze') return haze;
     if (sky && sky === 'Clouds') return clouds;
-    if (sky && sky === 'Mist') return rainy;
-    return sunny;
+    if (sky && sky === 'Mist') return mist;
+    return haze;
   }
 
   return (
@@ -39,15 +40,19 @@ export default function Details({ route }) {
         source={backgroundImage}
         resizeMode="cover"
         style={styles.backgroundImg}>
-        <Text style={{fontSize: 40}}>Details</Text>
+        <Text style={{ fontSize: 40 }}>Details</Text>
         <View style={styles.details}>
           <View style={(styles.place, styles.tile)}>
             <Text style={(styles.placeD, styles.smallText)}>Place</Text>
-            <Text style={(styles.cityNameD, styles.largeText)}>{weatherData.name}</Text>
+            <Text style={(styles.cityNameD, styles.largeText)}>
+              {weatherData.name}
+            </Text>
           </View>
           <View style={(styles.place, styles.tile)}>
             <Text style={(styles.tempD, styles.smallText)}>Temperature</Text>
-            <Text style={(styles.tempD, styles.largeText)}>{weatherData.main?.temp}°C</Text>
+            <Text style={(styles.tempD, styles.largeText)}>
+              {weatherData.main?.temp}°C
+            </Text>
           </View>
           <View style={styles.minMaxD}>
             <Text style={(styles.tempMaxD, styles.smallText)}>Temp Range</Text>
@@ -76,11 +81,19 @@ export default function Details({ route }) {
               {weatherData.wind?.speed} mph
             </Text>
           </View>
-          <View style={styles.description}>
-            <Text style={(styles.description, styles.smallText)}>
-              Weather Description
+          <View style={styles.minMaxD}>
+            <Text style={(styles.description, styles.smallText)}>Sky</Text>
+            <Text style={(styles.description, styles.mediumText)}>
+              {weatherData.weather[0].main}
             </Text>
-            <Text style={(styles.description, styles.mediumText)}>{weatherData.weather[0].description}</Text>
+          </View>
+          <View style={styles.minMaxD}>
+            <Text style={styles.smallText}>
+              Description
+            </Text>
+            <Text style={styles.mediumText}>
+              {weatherData.weather[0].description}
+            </Text>
           </View>
         </View>
       </ImageBackground>
@@ -144,14 +157,4 @@ const styles = StyleSheet.create({
     color: 'white',
     justifyContent: 'space-evenly',
   },
-  description: {
-    width: 335,
-     backgroundColor: 'rgba(0,0,0,0.5)',
-    padding: 10,
-    borderRadius: 15,
-    marginTop: 10,
-    color: 'white',
-    justifyContent: 'space-evenly',
-    height: 100
-  }
 });
