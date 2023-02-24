@@ -61,7 +61,7 @@ export default function SearchBar() {
                             <Text style={styles.temp}>{weatherData.main.temp}°</Text>
                             <View style={styles.minMax}>
                                 <Text style={styles.max}>H: {weatherData.main.temp_max}°</Text>
-                                <Text style={styles.min}>{weatherData.main.temp_min}°</Text>
+                                <Text style={styles.min}>L: {weatherData.main.temp_min}°</Text>
                             </View>
                         </View>
                     </View>
