@@ -31,6 +31,7 @@ export default function Details({ route }) {
     if (sky && sky === 'Haze') return haze;
     if (sky && sky === 'Clouds') return clouds;
     if (sky && sky === 'Mist') return mist;
+    if (!sky) return haze;
     return haze;
   }
 
