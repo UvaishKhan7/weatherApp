@@ -18,6 +18,7 @@ export default function Weather({ main, weather, cityName }) {
         if(weather && weather === 'Haze') return haze
         if(weather && weather === 'Clouds') return clouds
         if(weather && weather === 'Mist') return mist
+        if(!weather) return sunny
         return sunny;   
     }
 
